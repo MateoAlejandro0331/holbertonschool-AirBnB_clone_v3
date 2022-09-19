@@ -29,7 +29,7 @@ def get_amenities_id(amenity_id):
 
 @app_views.route(
     "/amenities/<amenity_id>", strict_slashes=False, methods=['DELETE'])
-def delete_state(amenity_id):
+def delete_amenities(amenity_id):
     """delete an amenities"""
     amenities = storage.get(Amenity, amenity_id)
     if amenities is None:
@@ -53,7 +53,7 @@ def post_amenities():
 
 @app_views.route(
     "/amenities/<amenity_id>", strict_slashes=False, methods=['PUT'])
-def put_state(amenity_id):
+def put_amenities(amenity_id):
     amenities = storage.get(Amenity, amenity_id)
     if amenities is None:
         abort(404)
