@@ -10,6 +10,7 @@ from flask import jsonify, abort, request
 @app_views.route(
     "/states/<state_id>/cities", strict_slashes=False, methods=['GET'])
 def retrive_cities(state_id):
+    """retrive cities"""
     state = storage.get(State, state_id)
     if state is not None:
         mylist = []
@@ -23,6 +24,7 @@ def retrive_cities(state_id):
 
 @app_views.route("/cities/<city_id>", strict_slashes=False, methods=['GET'])
 def get_city(city_id):
+    """get cities"""
     city = storage.get(City, city_id)
     if city is None:
         abort(404)
@@ -31,6 +33,7 @@ def get_city(city_id):
 
 @app_views.route("/cities/<city_id>", strict_slashes=False, methods=['DELETE'])
 def delete_city(city_id):
+    """delete cities"""
     city = storage.all(City, city_id)
     if city is None:
         abort(404)
@@ -42,6 +45,7 @@ def delete_city(city_id):
 @app_views.route(
     "/states/<state_id>/cities", strict_slashes=False, methods=['POST'])
 def city_post(state_id):
+    """create a city object"""
     state = storage.get(State, state_id)
     if state is None:
         abort(404)
@@ -57,6 +61,7 @@ def city_post(state_id):
 
 @app_views.route("/cities/<city_id>", strict_slashes=False, methods=['PUT'])
 def put_city(city_id):
+    """Update a city"""
     city = storage.get(City, city_id)
     if city is None:
         abort(404)
