@@ -53,7 +53,7 @@ def put_user(user_id):
     if user is None:
         abort(404)
     if not request.get_json():
-        abort(404)
+        abort(400)
     for key, value in request.get_json().items():
         if key != "id" or key != "created_at" or key != "updated_at":
             setattr(user, key, value)
